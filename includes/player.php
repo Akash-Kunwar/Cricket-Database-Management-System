@@ -12,7 +12,8 @@ $ptr=$_POST['ptr'];
 $ptw=$_POST['ptw'];
 $pbest=$_POST['pbest'];
 
-
+//ptw-PTMATCHES
+//ptbest-PTOURNAMENTS
 if(isset($_POST['submit5']))
 {
 $check=mysqli_query($conn,"select * from player where pid='$pid'");
@@ -21,7 +22,7 @@ if($checkrows>0)
 {
 echo "Player Already Exists";
 }else{
-$sql="Insert into player(pid,prank,pteam,pname,page,pjob,pavg,psr,ptr,ptw,pbest)
+$sql="Insert into player(pid,prank,pteam,pname,page,pjob,pavg,psr,ptr,ptmatches,pttournaments)
       values ('$pid','$prank','$pteam','$pname','$page','$pjob','$pavg','$psr','$ptr','$ptw','$pbest');";
 mysqli_query($conn,$sql);
 /*if ($conn->query($sql) === TRUE) {
