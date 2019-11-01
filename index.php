@@ -386,8 +386,8 @@ $resultcheck=mysqli_num_rows($result);
       <th>PAVG</th>
       <th>PSR</th>
       <th>PTR</th>
-      <th>PTW</th>
-      <th>PBEST</th>
+      <th>PTMATCHES</th>
+      <th>PTOURNAMENTS</th>
     </tr>
   </thead>
     <?php
@@ -403,8 +403,8 @@ $resultcheck=mysqli_num_rows($result);
         <td><?php echo $row['pavg']; ?></td>
         <td><?php echo $row['psr']; ?></td>
         <td><?php echo $row['ptr']; ?></td>
-        <td><?php echo $row['ptw']; ?></td>
-        <td><?php echo $row['pbest']; ?></td>
+        <td><?php echo $row['ptmatches']; ?></td>
+        <td><?php echo $row['pttournaments']; ?></td>
       </tr>
     <?php }
   } ?>
@@ -429,6 +429,7 @@ $resultcheck=mysqli_num_rows($result);
       <th>CAPTAIN</th>
       <th>VICE CAPTAIN</th>
       <th>COACH</th>
+      <th>Matches Won</th>
     </tr>
   </thead>
     <?php
@@ -441,6 +442,7 @@ $resultcheck=mysqli_num_rows($result);
         <td><?php echo strtoupper($row['cname']); ?></td>
         <td><?php echo strtoupper($row['vname']); ?></td>
         <td><?php echo strtoupper($row['coname']); ?></td>
+        <td><?php echo strtoupper($row['won']); ?></td>
       </tr>
     <?php }
   } ?>
@@ -567,6 +569,34 @@ $resultcheck=mysqli_num_rows($result);
     <?php }
   } ?>
   </table>
+</div>
+<div class="sql">
+  <table class="table-hover table-success table-bordered mytable" id="titable">
+    <tr>
+      <th>TEAM</th>
+      <th>POINTS</th>
+    </tr>
+  <?php
+  $s1="call maximum();";
+  $result1=mysqli_query($conn,$s1);
+  $resultcheck1=mysqli_num_rows($result1);
+
+  if($resultcheck1>0)
+  {
+    while($r=mysqli_fetch_assoc($result1)){
+      ?>
+
+        <tr>
+          <td><?php echo $r['tname']; ?></td>
+          <td><?php echo $r['won']; ?></td>
+        </tr>
+
+  <?php
+    }
+  }
+  ?>
+    </table>
+
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
